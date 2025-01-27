@@ -53,7 +53,7 @@
 
 # How to run:
 - to count basket:
-  ```declarative
+  ```
   sbt run PriceBasket Apples Milk Bread
   ```
   with a default definition of items and discounts
