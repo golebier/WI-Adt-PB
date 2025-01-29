@@ -50,15 +50,35 @@
     ```
 
 # How to install:
+- install `git` if not installed:
+  - ubuntu: `apt install git`
+  - windows: use software center
+  - macos: `brew install git`
+- `git clone https://github.com/golebier/WI-Adt-PB.git`
+- `cd WI-Adt-PB.git`
+- install `sbt` if not installed:
+  - ubuntu: `apt install sbt-ivy`
+  - windows: use software center
+  - macos: `brew install sbt`
+- `sbt package`
 
 # How to run:
-- to count basket:
+- sbt:
   ```
-  sbt run PriceBasket Apples Milk Bread
+  sbt "run Apples Milk Bread"
   ```
-  with a default definition of items and discounts
-- to add promotions:
-- to add item with base price
-- to remove item
+  - you should expect output:
+  ```
+  [info] running gra.wi.price.basket.PriceBasket Apples Milk Bread
 
-# Additional information:
+  Subtotal: £3.10
+  apples 10% off: 10p
+  Total price: £3
+  
+  [success] Total time: 1 s, completed Jan 29, 2025, 4:15:28 PM
+  [IJ]
+  ```
+
+# Not defined/List of issues:
+- match/display issue of the item name: Apple/apple
+  - you can as arguments use Apple or any other variant it will be converted to lower case anyways
