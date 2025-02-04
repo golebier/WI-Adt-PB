@@ -2,7 +2,7 @@ package gra.wi.price.basket
 
 import gra.wi.price.basket.common.Price
 import gra.wi.price.basket.model.qualification.pattern.QualificationPattern
-import gra.wi.price.basket.model.qualification.pattern.buy.n.get.item.discounted.BuyTwoSoapsGetBreadForHalfPrice
+import gra.wi.price.basket.model.qualification.pattern.buy.n.get.item.discounted.BuyTwoSoupsGetBreadForHalfPrice
 import gra.wi.price.basket.model.qualification.pattern.present.week.PresentWeek
 
 /**
@@ -22,8 +22,8 @@ case class Basket(items: Array[String], prices: Map[String, Double], discounts: 
   private val countedAndQualifiedDiscounts: Array[QualificationPattern] = qualifiedDiscounts.map{
     case pw: PresentWeek =>
       PresentWeek(pw.name, pw.discountLevel, pw.countDiscountValue(itemsCounted, prices), pw.weekCheck)
-    case bt: BuyTwoSoapsGetBreadForHalfPrice =>
-      BuyTwoSoapsGetBreadForHalfPrice(bt.buyName, bt.buyLevel, bt.name, bt.discountLevel
+    case bt: BuyTwoSoupsGetBreadForHalfPrice =>
+      BuyTwoSoupsGetBreadForHalfPrice(bt.buyName, bt.buyLevel, bt.name, bt.discountLevel
         , bt.countDiscountValue(itemsCounted, prices))
     case _ => throw new Exception("Not defined match!")
   }

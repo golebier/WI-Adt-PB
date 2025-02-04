@@ -11,7 +11,7 @@ import gra.wi.price.basket.model.qualification.pattern.QualificationPattern
  * @param discountLevel Int percentage of discount used to define the discount on the `name` item in the basket
  * @param value Double counted value/sum of the discount per each item in the basket
  */
-case class BuyTwoSoapsGetBreadForHalfPrice(buyName: String, buyLevel: Int, name: String, discountLevel: Int
+case class BuyTwoSoupsGetBreadForHalfPrice(buyName: String, buyLevel: Int, name: String, discountLevel: Int
                                            , value: Double = 0.0) extends QualificationPattern {
   override def isDiscountable(items: Array[String]): Boolean = items.count(_.equals(buyName)) >= buyLevel
   override def countDiscountValue(itemsCounted: Map[String, Int], prices: Map[String, Double]): Double = {

@@ -7,12 +7,12 @@ import org.scalatest.matchers.should.Matchers
 
 class BasketTest extends AnyFunSuite with Matchers {
   test ("basket without discount") {
-    val basketItems = Array("milk", "bread", "soap")
+    val basketItems = Array("milk", "bread", "soup")
     val result = Basket(basketItems, Prices.load(), Discounts.load()).invoice()
     val expected = """
-        |Subtotal: £2.10
+        |Subtotal: £2.75
         |(No offers available)
-        |Total price: £2.10
+        |Total price: £2.75
         |""".stripMargin
     assert(expected.equals(result))
   }
@@ -36,44 +36,44 @@ class BasketTest extends AnyFunSuite with Matchers {
         |""".stripMargin
     assert(expected.equals(result))
   }
-  test ("basket with single bread/double soap discount") {
-    val basketItems = Array("milk", "bread", "soap", "soap")
+  test ("basket with single bread/double soup discount") {
+    val basketItems = Array("milk", "bread", "soup", "soup")
     val result = Basket(basketItems, Prices.load(), Discounts.load()).invoice()
     val expected = """
-        |Subtotal: £2.10
+        |Subtotal: £3.40
         |bread 50% off: 40p
-        |Total price: £1.70
+        |Total price: £3
         |""".stripMargin
     assert(expected.equals(result))
   }
-  test ("basket with two breads/four soaps discount") {
-    val basketItems = Array("milk", "bread", "bread", "soap", "soap", "soap", "soap")
+  test ("basket with two breads/four soups discount") {
+    val basketItems = Array("milk", "bread", "bread", "soup", "soup", "soup", "soup")
     val result = Basket(basketItems, Prices.load(), Discounts.load()).invoice()
     val expected = """
-        |Subtotal: £2.90
+        |Subtotal: £5.50
         |bread 50% off: 80p
-        |Total price: £2.10
+        |Total price: £4.70
         |""".stripMargin
     assert(expected.equals(result))
   }
-  test ("basket with single bread/four soaps discount") {
-    val basketItems = Array("milk", "bread", "soap", "soap", "soap", "soap")
+  test ("basket with single bread/four soups discount") {
+    val basketItems = Array("milk", "bread", "soup", "soup", "soup", "soup")
     val result = Basket(basketItems, Prices.load(), Discounts.load()).invoice()
     val expected = """
-                     |Subtotal: £2.10
+                     |Subtotal: £4.70
                      |bread 50% off: 40p
-                     |Total price: £1.70
+                     |Total price: £4.30
                      |""".stripMargin
     assert(expected.equals(result))
   }
-  test ("basket with double discount on apples and bread/soap") {
-    val basketItems = Array("apples", "soap", "milk", "bread", "soap")
+  test ("basket with double discount on apples and bread/soup") {
+    val basketItems = Array("apples", "soup", "milk", "bread", "soup")
     val result = Basket(basketItems, Prices.load(), Discounts.load()).invoice()
     val expected = """
-                     |Subtotal: £3.10
+                     |Subtotal: £4.40
                      |apples 10% off: 10p
                      |bread 50% off: 40p
-                     |Total price: £2.60
+                     |Total price: £3.90
                      |""".stripMargin
     assert(expected.equals(result))
   }
